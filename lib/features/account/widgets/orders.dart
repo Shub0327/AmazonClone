@@ -1,4 +1,5 @@
 import 'package:amazon_clone/constants/global_variables.dart';
+import 'package:amazon_clone/features/account/widgets/single_product.dart';
 import 'package:flutter/material.dart';
 
 class Orders extends StatelessWidget {
@@ -6,7 +7,14 @@ class Orders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List list = [];
+    List list = [
+      'https://images.unsplash.com/photo-1700579837858-604ab37cbeac?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1700579837858-604ab37cbeac?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1700579837858-604ab37cbeac?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1700579837858-604ab37cbeac?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1700579837858-604ab37cbeac?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1700579837858-604ab37cbeac?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    ];
 
     return Column(
       children: [
@@ -38,8 +46,13 @@ class Orders extends StatelessWidget {
         Container(
           padding: const EdgeInsets.only(left: 10, right: 0, top: 20),
           height: 170,
-          child:
-              ListView.builder(itemBuilder: (context, index) {}, itemCount: 5),
+          child: ListView.builder(
+            itemBuilder: (context, index) {
+              return SingleProduct(img: list[index]);
+            },
+            itemCount: list.length,
+            scrollDirection: Axis.horizontal,
+          ),
         ),
       ],
     );
