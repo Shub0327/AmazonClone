@@ -4,6 +4,8 @@ import 'package:amazon_clone/features/home/widgets/carousal_image.dart';
 import 'package:amazon_clone/features/home/widgets/top_category.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/deal_of_day.dart';
+
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home';
   const HomeScreen({super.key});
@@ -83,14 +85,18 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      body: Column(
-        children: const [
-          AddressBox(),
-          SizedBox(height: 10),
-          TopCategory(),
-          SizedBox(height: 10),
-          Carousel(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: const [
+            AddressBox(),
+            SizedBox(height: 10),
+            TopCategory(),
+            SizedBox(height: 10),
+            Carousel(),
+            SizedBox(height: 10),
+            DealofDay(),
+          ],
+        ),
       ),
     );
   }

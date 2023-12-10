@@ -26,13 +26,14 @@ class AddressBox extends StatelessWidget {
             const Icon(
               Icons.location_on_outlined,
               size: 20,
+              color: Colors.black87,
             ),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(left: 5),
                 child: Text(
-                  'Deliver to ${user.name} -x` ${user.address}',
-                  style: const TextStyle(fontWeight: FontWeight.w500),
+                  'Deliver to ${user.name} - ${user.address}',
+                  style: const TextStyle(fontWeight: FontWeight.w400),
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
