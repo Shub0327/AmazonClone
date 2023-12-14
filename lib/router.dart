@@ -20,7 +20,7 @@ Route<dynamic> generateRoutes(RouteSettings routeSettings) {
 
     case AddProduct.routeName:
       return MaterialPageRoute(
-          settings: routeSettings, builder: (_) => const AddProduct());
+          settings: routeSettings, builder: (_) => AddProduct());
 
     default:
       return MaterialPageRoute(
