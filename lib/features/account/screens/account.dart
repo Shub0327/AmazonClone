@@ -32,8 +32,8 @@ class Account extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.only(left: 15, right: 15),
-                child: Row(
-                  children: const [
+                child: const Row(
+                  children: [
                     Icon(Icons.search_outlined),
                     SizedBox(width: 10),
                     Icon(Icons.notifications_outlined),
