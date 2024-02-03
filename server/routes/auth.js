@@ -83,6 +83,7 @@ authRouter.post('/api/validate-token',(req,res)=>{
         if(!user){
             return res.json(false);
         }
+        
         return res.json(true);
     }
     catch(e){

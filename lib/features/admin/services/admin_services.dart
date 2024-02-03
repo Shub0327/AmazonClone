@@ -23,6 +23,8 @@ class AdminServices {
     final userprovider = Provider.of<UserProvider>(context, listen: false);
 
     try {
+      debugPrint('Uploading images');
+
       final cloudinary = CloudinaryPublic('dhmmdnev5', 'zhabjlf6');
       List<String> imageUrls = [];
       for (int i = 0; i < images.length; i++) {
@@ -31,6 +33,7 @@ class AdminServices {
         );
         imageUrls.add(response.secureUrl.toString());
       }
+      debugPrint('Images uploaded');
       Product product = Product(
         name: name,
         description: description,
@@ -39,6 +42,7 @@ class AdminServices {
         category: category,
         images: imageUrls,
       );
+      debugPrint('Product: ${product.toJson()}');
 
       http.Response res = await http.post(Uri.parse('$uri/admin/add-product'),
           headers: {
@@ -46,6 +50,8 @@ class AdminServices {
             'x-auth-token': userprovider.user.token
           },
           body: product.toJson());
+
+      debugPrint('Response: ${res.body}');
 
       httpErrorHandle(
           response: res,

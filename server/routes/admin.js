@@ -3,7 +3,7 @@ const adminRouter = express.Router();
 const admin=require('../middleware/admin');
 const Product = require('../model/product');
 
-//creating admin middleware
+//add product
     adminRouter.post('/admin/add-product',admin, async (req, res) => {
 
     try {
@@ -24,6 +24,16 @@ const Product = require('../model/product');
       catch (e) {
         return res.status(500).json({error:e.message});
         
+    }
+})
+
+//get all products
+adminRouter.get('/admin/products',admin, async (req, res) => {
+    try {
+        const products = await Product.find();
+        res.json(products);
+    } catch (e) {
+        return res.status(500).json({error:e.message});
     }
 })
 

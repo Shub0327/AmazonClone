@@ -1,10 +1,11 @@
 const jwt =require('jsonwebtoken');
 const User=require('../model/user');
 
-const admin=((req,res,next)=>{
+const admin=async (req,res,next)=>{
 try {
     //get token from header
     const token = req.header("x-auth-token");
+    console.log(token);
     if(!token){
         return res.status(401).json({msg:"No authentication token, authorization denied"});
     }
@@ -14,9 +15,11 @@ try {
         return res.status(401).json({msg:"Token verification failed, authorization denied"});
     }
     //add user from payload
-    const user=User.findById(verified.id);
-    if(user.type!=='admin'){
-        return res.status(401).json({msg:"No user found with this id"});
+    const user=await User.findById(verified.id);
+
+    console.log(user.token);
+    if(user.type!=="admin"){
+        return res.status(401).json({msg:"You are not admin to access this route, authorization denied"});
     }
     req.user=verified.id;
     req.token=token;
@@ -26,5 +29,4 @@ try {
 }
 next();
 }   
-);
 module.exports=admin;

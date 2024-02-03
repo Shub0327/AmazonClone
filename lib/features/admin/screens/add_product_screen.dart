@@ -56,6 +56,8 @@ class _AddProductState extends State<AddProduct> {
         category: category,
         images: images,
       );
+    } else {
+      showSnackBar(context, 'Please fill all the fields');
     }
   }
 
