@@ -24,7 +24,7 @@ const productSchema =mongoose.Schema({
             required: true,
             type: String
         },
-        image:[
+        images:[
             {
             required: true,
             type: String
@@ -32,6 +32,7 @@ const productSchema =mongoose.Schema({
     ],
     
     
-    });
+    }
+    );
 const Product =mongoose.model('Product',productSchema);
 module.exports=Product;

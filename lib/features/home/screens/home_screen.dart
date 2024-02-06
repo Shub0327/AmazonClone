@@ -15,6 +15,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  void navigateToSearchScreen(String searchQuery) {
+    Navigator.pushNamed(context, '/SearchScreen', arguments: searchQuery);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(7),
                     elevation: 1,
                     child: TextFormField(
+                      onFieldSubmitted: navigateToSearchScreen,
                       decoration: InputDecoration(
                         hintText: 'Search Amazon.in',
                         hintStyle: const TextStyle(

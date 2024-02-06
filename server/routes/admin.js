@@ -8,14 +8,14 @@ const Product = require('../model/product');
 
     try {
         
-        const {name,description,price,quantity,category,image}=req.body; 
+        const {name,description,price,quantity,category,images}=req.body; 
         let product= new Product({  
             name,
             description,
             price,
             quantity,
             category,
-            image, 
+            images, 
         });
         product=await product.save();
         res.json(product);  
@@ -32,6 +32,16 @@ adminRouter.get('/admin/products',admin, async (req, res) => {
     try {
         const products = await Product.find();
         res.json(products);
+    } catch (e) {
+        return res.status(500).json({error:e.message});
+    }
+})
+
+//delete product
+adminRouter.delete('/admin/delete-product/:id',admin, async (req, res) => {
+    try {
+        const product = await Product.findByIdAndDelete(req.params.id);
+        res.json(product);
     } catch (e) {
         return res.status(500).json({error:e.message});
     }
